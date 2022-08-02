@@ -1,0 +1,30 @@
+{
+  "name": "p5.serialport",
+  "version": "0.0.31",
+  "description": "Library for serial port and p5.js",
+  "author": "Shawn Van Every <Shawn.Van.Every@nyu.edu>, Jiwon Shin <jiwon.shin@nyu.edu>",
+  "main": "lib/p5.serialport.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p5-serial/p5.serialport"
+  },
+  "bugs": {
+    "url": "https://github.com/p5-serial/p5.serialport/issues"
+  },
+  "keywords": [
+    "serial",
+    "p5.js",
+    "arduino"
+  ],
+  "dependencies": {
+    "serialport": "^10.4.0",
+    "ws": "^7.0"
+  },
+  "license": "GPL",
+  "devDependencies": {
+    "jsdoc": "^3.6.3"
+  },
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.conf.json"
+  }
+}
