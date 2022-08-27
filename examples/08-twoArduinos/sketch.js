@@ -5,8 +5,8 @@ By Jiwon Shin
 */
 // Declare a "SerialPort" object
 let serialOne, serialTwo;
-let latestDataOne = "waiting for data";
-let latestDataTwo = "waiting for data";  // you'll use this to write incoming data to the canvas
+let latestDataOne = 'waiting for data';
+let latestDataTwo = 'waiting for data'; // you'll use this to write incoming data to the canvas
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -21,8 +21,8 @@ function setup() {
 
   // Assuming our Arduino is connected, let's open the connection to it
   // Change this to the name of your arduino's serial port
-  serialOne.open("/dev/tty.usbmodem14501");
-  serialTwo.open("/dev/tty.usbmodem14101")
+  serialOne.openPort('/dev/tty.usbmodem14501');
+  serialTwo.openPort('/dev/tty.usbmodem14101');
 
   // Here are the callbacks that you can register
   // When we connect to the underlying server
@@ -63,27 +63,27 @@ function setup() {
 
 // We are connected and ready to go
 function serverConnected() {
-  print("Connected to Server");
+  print('Connected to Server');
 }
 
 // Got the list of ports
 function gotList(thelist) {
-  print("List of Serial Ports:");
+  print('List of Serial Ports:');
   // theList is an array of their names
   for (let i = 0; i < thelist.length; i++) {
     // Display in the console
-    print(i + " " + thelist[i]);
+    print(i + ' ' + thelist[i]);
   }
 }
 
 // Connected to our serial device
 function gotOpen() {
-  print("Serial Port is Open");
+  print('Serial Port is Open');
 }
 
-function gotClose(){
-    print("Serial Port is Closed");
-    latestData = "Serial Port is Closed";
+function gotClose() {
+  print('Serial Port is Closed');
+  latestData = 'Serial Port is Closed';
 }
 
 // Ut oh, here is an error, let's log it
@@ -93,25 +93,25 @@ function gotError(theerror) {
 
 // There is data available to work with from the serial port
 function gotDataOne() {
-  let currentString = serialOne.readLine();  // read the incoming string
-  trim(currentString);                    // remove any trailing whitespace
-  if (!currentString) return;             // if the string is empty, do no more
-  console.log(currentString);             // print the string
-  latestDataOne = currentString;            // save it for the draw method
+  let currentString = serialOne.readLine(); // read the incoming string
+  trim(currentString); // remove any trailing whitespace
+  if (!currentString) return; // if the string is empty, do no more
+  console.log(currentString); // print the string
+  latestDataOne = currentString; // save it for the draw method
 }
 
 // There is data available to work with from the serial port
 function gotDataTwo() {
-    let currentString = serialTwo.readLine();  // read the incoming string
-    trim(currentString);                    // remove any trailing whitespace
-    if (!currentString) return;             // if the string is empty, do no more
-    console.log(currentString);             // print the string
-    latestDataTwo = currentString;            // save it for the draw method
+  let currentString = serialTwo.readLine(); // read the incoming string
+  trim(currentString); // remove any trailing whitespace
+  if (!currentString) return; // if the string is empty, do no more
+  console.log(currentString); // print the string
+  latestDataTwo = currentString; // save it for the draw method
 }
 
 // We got raw from the serial port
 function gotRawData(thedata) {
-  print("gotRawData" + thedata);
+  print('gotRawData' + thedata);
 }
 
 // Methods available
@@ -129,8 +129,8 @@ function gotRawData(thedata) {
 // serial.write(somevar) writes out the value of somevar to the serial device
 
 function draw() {
-  background(255,255,255);
-  fill(0,0,0);
+  background(255, 255, 255);
+  fill(0, 0, 0);
   text(`From Arduino One: ${latestDataOne}`, 10, 10);
   text(`From Arduino Two: ${latestDataTwo}`, 10, 30);
   // Polling method

@@ -14,7 +14,7 @@ by Tom Igoe
 // Declare a "SerialPort" object
 let serial;
 // fill in the name of your serial port here:
-let portName = "/dev/cu.usbmodem1411";
+let portName = '/dev/cu.usbmodem1411';
 let textXpos = 10;
 
 function setup() {
@@ -28,7 +28,7 @@ function setup() {
   serial.list();
 
   // Assuming our Arduino is connected,  open the connection to it
-  serial.open(portName);
+  serial.openPort(portName);
 
   // When you get a list of serial ports that are available
   serial.on('list', gotList);
@@ -37,30 +37,30 @@ function setup() {
   serial.on('data', gotData);
 }
 
-
 // Got the list of ports
 function gotList(thelist) {
-  print("List of Serial Ports:");
+  print('List of Serial Ports:');
   // theList is an array of their names
   for (let i = 0; i < thelist.length; i++) {
     // Display in the console
-    print(i + " " + thelist[i]);
+    print(i + ' ' + thelist[i]);
   }
 }
 
 // Called when there is data available from the serial port
 function gotData() {
-  let currentString = serial.readLine();  // read the incoming data
-  trim(currentString);                    // trim off trailing whitespace
-  if (!currentString) return;             // if the incoming string is empty, do no more
+  let currentString = serial.readLine(); // read the incoming data
+  trim(currentString); // trim off trailing whitespace
+  if (!currentString) return; // if the incoming string is empty, do no more
   console.log(currentString);
-  if (!isNaN(currentString)) {  // make sure the string is a number (i.e. NOT Not a Number (NaN))
-    textXpos = currentString;   // save the currentString to use for the text position in draw()
+  if (!isNaN(currentString)) {
+    // make sure the string is a number (i.e. NOT Not a Number (NaN))
+    textXpos = currentString; // save the currentString to use for the text position in draw()
   }
 }
 
 function draw() {
-  background(255,255,255);
-  fill(0,0,0);
-  text("sensor value: " + textXpos, textXpos, 30);
+  background(255, 255, 255);
+  fill(0, 0, 0);
+  text('sensor value: ' + textXpos, textXpos, 30);
 }

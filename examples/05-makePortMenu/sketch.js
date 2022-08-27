@@ -13,14 +13,14 @@ by Tom Igoe
 
 let serial; // Declare a "SerialPort" object
 let menu;
-let result = "";
+let result = '';
 
 function setup() {
   createCanvas(400, 300); // window size
   serial = new p5.SerialPort();
   serial.list();
-  serial.on("list", printList);
-  serial.on("data", printData);
+  serial.on('list', printList);
+  serial.on('data', printData);
 }
 
 function draw() {
@@ -31,11 +31,11 @@ function draw() {
 
 function openPort() {
   portName = menu.elt.value;
-  serial.open(portName);
+  serial.openPort(portName);
 }
 
 function printData() {
-  let inString = serial.readStringUntil("\r\n");
+  let inString = serial.readStringUntil('\r\n');
   trim(inString);
   if (!inString) return;
   result = inString;
@@ -44,14 +44,14 @@ function printData() {
 // Got the list of ports
 function printList(serialList) {
   menu = createSelect();
-  let title = createElement("option", "Choose a port:");
+  let title = createElement('option', 'Choose a port:');
   menu.child(title);
   menu.position(10, 10);
   menu.changed(openPort);
   for (let i = 0; i < serialList.length; i++) {
-    let thisOption = createElement("option", serialList[i]);
+    let thisOption = createElement('option', serialList[i]);
     thisOption.value = serialList[i];
     menu.child(thisOption);
-    print(i + " " + serialList[i]);
+    print(i + ' ' + serialList[i]);
   }
 }

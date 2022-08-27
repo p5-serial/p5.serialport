@@ -8,7 +8,7 @@ function setup() {
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
 
-  serial.open(portName); // open a serial port
+  serial.openPort(portName); // open a serial port
   serial.clear();
 }
 
