@@ -1,11 +1,20 @@
+let exampleName = '01-basics';
+
 // declare a variable for p5.SerialPort object
 let serial;
 
 // declare variable for latest data
-let latestData = "waiting for data";
+let latestData = 'waiting for data';
+
+let yellow;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // small canvas
+  createCanvas(500, 500);
+
+  textAlign(CENTER, CENTER);
+
+  yellow = color(255, 255, 0);
 
   // instantiate the SerialPort objects
   serial = new p5.SerialPort();
@@ -14,65 +23,61 @@ function setup() {
   // You should have a callback defined to see the results
   serial.list();
 
-  // Assuming our Arduino is connected, let's open the connection to it
-  // Change this to the name of your arduino's serial port
-  serial.open("/dev/tty.usbmodem141101");
+  // // Assuming our Arduino is connected, let's open the connection to it
+  // // Change this to the name of your arduino's serial port
+  // serial.open('/dev/tty.usbmodem141101');
 
-  // Here are the callbacks that you can register
-  // When we connect to the underlying server
-  serial.on("connected", serverConnected);
+  // // Here are the callbacks that you can register
+  // // When we connect to the underlying server
+  // serial.on('connected', serverConnected);
 
-  // When we get a list of serial ports that are available
-  serial.on("list", gotList);
-  // OR
-  //serial.onList(gotList);
+  // // When we get a list of serial ports that are available
+  serial.on('list', gotList);
 
-  // When we some data from the serial port
-  serial.on("data", gotData);
-  // OR
-  //serial.onData(gotData);
+  // // When we some data from the serial port
+  // serial.on('data', gotData);
+  // // OR
+  // //serial.onData(gotData);
 
-  // When or if we get an error
-  serial.on("error", gotError);
-  // OR
-  //serial.onError(gotError);
+  // // When or if we get an error
+  // serial.on('error', gotError);
+  // // OR
+  // //serial.onError(gotError);
 
   // When our serial port is opened and ready for read/write
-  serial.on("open", gotOpen);
-  // OR
-  //serial.onOpen(gotOpen);
+  serial.on('open', gotOpen);
 
-  serial.on("close", gotClose);
+  // serial.on('close', gotClose);
 
-  // Callback to get the raw data, as it comes in for handling yourself
-  //serial.on('rawdata', gotRawData);
-  // OR
-  //serial.onRawData(gotRawData);
+  // // Callback to get the raw data, as it comes in for handling yourself
+  // //serial.on('rawdata', gotRawData);
+  // // OR
+  // //serial.onRawData(gotRawData);
 }
 
 // We are connected and ready to go
 function serverConnected() {
-  print("Connected to Server");
+  print('Connected to Server');
 }
 
 // Got the list of ports
 function gotList(thelist) {
-  print("List of Serial Ports:");
+  print('List of Serial Ports:');
   // theList is an array of their names
   for (let i = 0; i < thelist.length; i++) {
     // Display in the console
-    print(i + " " + thelist[i]);
+    print(i + ' ' + thelist[i]);
   }
 }
 
 // Connected to our serial device
 function gotOpen() {
-  print("Serial Port is Open");
+  print('Serial Port is Open');
 }
 
 function gotClose() {
-  print("Serial Port is Closed");
-  latestData = "Serial Port is Closed";
+  print('Serial Port is Closed');
+  latestData = 'Serial Port is Closed';
 }
 
 // Ut oh, here is an error, let's log it
@@ -96,13 +101,15 @@ function gotData() {
 
 // We got raw from the serial port
 function gotRawData(thedata) {
-  print("gotRawData" + thedata);
+  print('gotRawData' + thedata);
 }
 
 function draw() {
-  background(255, 255, 255);
-  fill(0, 0, 0);
-  text(latestData, 10, 10);
+  background(yellow);
+  text(exampleName, width / 2, height / 10);
+  print('test');
+  // fill(0, 0, 0);
+  // text(latestData, 10, 10);
   // Polling method
   /*
   if (serial.available() > 0) {
