@@ -3,6 +3,9 @@ let exampleName = '01-basics';
 // declare a variable for p5.SerialPort object
 let serial;
 
+// change this to the name of your Arduino's serial port
+let namePort = '/dev/cu.usbmodem11201';
+
 // declare variable for latest data
 let latestData = 'waiting for data';
 
@@ -12,47 +15,45 @@ function setup() {
   // small canvas
   createCanvas(500, 500);
 
+  input = createInput(namePort);
+  button = createButton('update port');
+  button.mousePressed(updatePort);
+
   textAlign(CENTER, CENTER);
 
   yellow = color(255, 255, 0);
 
-  // instantiate the SerialPort objects
+  // instantiate the SerialPort object
   serial = new p5.SerialPort();
 
   // get a list the ports available
   // You should have a callback defined to see the results
   serial.list();
 
-  // // Assuming our Arduino is connected, let's open the connection to it
-  // // Change this to the name of your arduino's serial port
-  // serial.open('/dev/tty.usbmodem141101');
+  // Assuming our Arduino is connected, let's open the connection to it
+  // Change this to the name of your arduino's serial port
+  serial.openPort(namePort);
 
-  // // Here are the callbacks that you can register
-  // // When we connect to the underlying server
-  // serial.on('connected', serverConnected);
+  // Here are the callbacks that you can register
+  // When we connect to the underlying server
+  serial.on('connected', serverConnected);
 
-  // // When we get a list of serial ports that are available
+  // When we get a list of serial ports that are available
   serial.on('list', gotList);
 
-  // // When we some data from the serial port
-  // serial.on('data', gotData);
-  // // OR
-  // //serial.onData(gotData);
+  // When we some data from the serial port
+  serial.on('data', gotData);
 
-  // // When or if we get an error
-  // serial.on('error', gotError);
-  // // OR
-  // //serial.onError(gotError);
+  // When or if we get an error
+  serial.on('error', gotError);
 
   // When our serial port is opened and ready for read/write
   serial.on('open', gotOpen);
 
-  // serial.on('close', gotClose);
+  serial.on('close', gotClose);
 
-  // // Callback to get the raw data, as it comes in for handling yourself
-  // //serial.on('rawdata', gotRawData);
-  // // OR
-  // //serial.onRawData(gotRawData);
+  // Callback to get the raw data, as it comes in for handling yourself
+  // serial.on('rawdata', gotRawData);
 }
 
 // We are connected and ready to go
@@ -117,4 +118,8 @@ function draw() {
   ellipse(50,50,data,data);
 }
 */
+}
+
+function updatePort() {
+  namePort = input.value();
 }
