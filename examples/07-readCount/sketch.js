@@ -13,7 +13,7 @@ let inByte;
 let byteCount = 0;
 let output = 0;
 let options = {
-  baudRate: 9600
+  baudRate: 9600,
 };
 
 function setup() {
@@ -22,7 +22,7 @@ function setup() {
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
 
-  serial.open(portName, options); // open a serial port
+  serial.openPort(portName, options); // open a serial port
   serial.clear();
 }
 
@@ -31,8 +31,9 @@ function draw() {
   background(0);
   fill(255);
   // display the incoming serial data as a string:
-  let displayString = "inByte: " + inByte + "\t Byte count: " + byteCount;
-  displayString += "  available: " + serial.available();
+  let displayString =
+    'inByte: ' + inByte + '\t Byte count: ' + byteCount;
+  displayString += '  available: ' + serial.available();
   text(displayString, 30, 60);
 }
 

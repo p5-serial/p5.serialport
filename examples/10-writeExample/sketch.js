@@ -27,7 +27,7 @@ function setup() {
   serial.list();
 
   // Assuming our Arduino is connected,  open the connection to it
-  serial.open(portName);
+  serial.openPort(portName);
 
   // When you get a list of serial ports that are available
   serial.on('list', gotList);
@@ -36,14 +36,13 @@ function setup() {
   serial.on('data', gotData);
 }
 
-
 // Got the list of ports
 function gotList(thelist) {
-  console.log("List of Serial Ports:");
+  console.log('List of Serial Ports:');
   // theList is an array of their names
   for (let i = 0; i < thelist.length; i++) {
     // Display in the console
-    console.log(i + " " + thelist[i]);
+    console.log(i + ' ' + thelist[i]);
   }
 }
 
@@ -54,9 +53,9 @@ function gotData() {
 }
 
 function draw() {
-  background(255,255,255);
-  fill(0,0,0);
-  text("click to change the LED", 10, 10);
+  background(255, 255, 255);
+  fill(0, 0, 0);
+  text('click to change the LED', 10, 10);
 }
 // When you click on the screen, the server sends H or L out the serial port
 function mouseReleased() {
