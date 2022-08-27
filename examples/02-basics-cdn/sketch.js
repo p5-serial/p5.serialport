@@ -30,7 +30,7 @@ function setup() {
   serial.list();
 
   // Assuming our Arduino is connected, let's open the connection to it
-  serial.open(namePort);
+  serial.openPort(namePort);
 
   // Here are the callbacks that you can register
   // When we connect to the underlying server
