@@ -15,7 +15,9 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
-let portName = '/dev/tty.usbmodem14501'; // fill in your serial port name here
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
+
 let inData; // for incoming serial data
 let inByte;
 let byteCount = 0;
@@ -41,7 +43,7 @@ function setup() {
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
 
-  serial.openPort(portName, options); // open a serial port
+  serial.openPort(serialPortName, options); // open a serial port
   serial.clear();
 }
 

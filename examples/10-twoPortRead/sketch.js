@@ -15,6 +15,10 @@ let black;
 
 let serial1 = new p5.SerialPort();
 let serial2 = new p5.SerialPort();
+
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
+
 let firstPort = '/dev/cu.usbmodem14111';
 let secondPort = '/dev/cu.usbmodem141431';
 let input1 = '';
