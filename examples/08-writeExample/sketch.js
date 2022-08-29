@@ -7,7 +7,7 @@
 // by Tom Igoe
 
 // constant for example name
-const exampleName = '09-writeExample';
+const exampleName = '08-writeExample';
 
 // variable for background color of the p5.js canvas
 let yellow;

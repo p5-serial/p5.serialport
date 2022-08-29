@@ -36,7 +36,7 @@ function setup() {
   // set text alignment
   textAlign(LEFT, CENTER);
 
-  inputField = createInput(namePort);
+  inputField = createInput(serialPortName);
   button = createButton('update port');
   button.mousePressed(updatePort);
 
@@ -49,7 +49,7 @@ function setup() {
 
   // Assuming our Arduino is connected, let's open the connection to it
   // Change this to the name of your arduino's serial port
-  serial.openPort(namePort);
+  serial.openPort(serialPortName);
 
   // Here are the callbacks that you can register
   // When we connect to the underlying server

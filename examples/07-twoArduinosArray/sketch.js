@@ -3,7 +3,7 @@
 // By Jiwon Shin
 
 // constant for example name
-const exampleName = '08-twoArduinosArray';
+const exampleName = '07-twoArduinosArray';
 
 // variable for background color of the p5.js canvas
 let yellow;

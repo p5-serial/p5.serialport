@@ -5,7 +5,7 @@
 // data coming in from both ports independently.
 
 // constant for example name
-const exampleName = '10-twoPortRead';
+const exampleName = '09-twoPortRead';
 
 // variable for background color of the p5.js canvas
 let yellow;
