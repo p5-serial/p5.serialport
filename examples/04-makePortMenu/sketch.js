@@ -10,6 +10,9 @@ let exampleName = '04-makePortMenu';
 // variable for background color of the p5.js canvas
 let yellow;
 
+// variable for text color
+let black;
+
 let serial; // Declare a "SerialPort" object
 let menu;
 let result = '';
@@ -21,6 +24,9 @@ function setup() {
   // set yellow color for background
   yellow = color(255, 255, (255 * 2) / 8);
 
+  // set black color for text
+  black = color(0);
+
   serial = new p5.SerialPort();
   serial.list();
   serial.on('list', printList);
@@ -30,7 +36,13 @@ function setup() {
 function draw() {
   // paint background
   background(yellow);
-  fill(0);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
   text(result, 10, 60);
 }
 

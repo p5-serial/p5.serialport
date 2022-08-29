@@ -11,6 +11,9 @@ let exampleName = '09-writeExample';
 // variable for background color of the p5.js canvas
 let yellow;
 
+// variable for text color
+let black;
+
 // Declare a "SerialPort" object
 let serial;
 
@@ -25,6 +28,9 @@ function setup() {
 
   // set yellow color for background
   yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();
@@ -62,7 +68,13 @@ function gotData() {
 function draw() {
   // paint background
   background(yellow);
-  fill(0, 0, 0);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
   text('click to change the LED', 10, 10);
 }
 // When you click on the screen, the server sends H or L out the serial port

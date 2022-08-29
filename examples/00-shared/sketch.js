@@ -1,16 +1,30 @@
 let exampleName = '00-shared';
 
+// variable for background color of the p5.js canvas
 let yellow;
+
+// variable for text color
+let black;
 
 function setup() {
   // small canvas
   createCanvas(300, 300);
 
-  yellow = color(255, 255, 0);
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
 }
 
 function draw() {
+  // paint background
   background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
   text(exampleName, (5 * width) / 100, (5 * height) / 100);
 }
 

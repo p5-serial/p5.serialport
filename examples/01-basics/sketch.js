@@ -5,6 +5,9 @@ let exampleName = '01-basics';
 // variable for background color of the p5.js canvas
 let yellow;
 
+// variable for text color
+let black;
+
 // declare a variable for p5.SerialPort object
 let serial;
 let latestData = 'waiting for data';
@@ -24,6 +27,9 @@ function setup() {
 
   // set yellow color for background
   yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
 
   inputField = createInput(namePort);
   button = createButton('update port');
@@ -62,6 +68,26 @@ function setup() {
 
   // Callback to get the raw data, as it comes in for handling yourself
   // serial.on('rawdata', gotRawData);
+}
+
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  // text(latestData, 10, 10);
+  // Polling method
+  /*
+  if (serial.available() > 0) {
+  let data = serial.read();
+  ellipse(50,50,data,data);
+}
+*/
 }
 
 // We are connected and ready to go
@@ -111,20 +137,6 @@ function gotData() {
 // We got raw from the serial port
 function gotRawData(thedata) {
   print('gotRawData' + thedata);
-}
-
-function draw() {
-  background(yellow);
-  text(exampleName, (5 * width) / 100, (5 * height) / 100);
-  // fill(0, 0, 0);
-  // text(latestData, 10, 10);
-  // Polling method
-  /*
-  if (serial.available() > 0) {
-  let data = serial.read();
-  ellipse(50,50,data,data);
-}
-*/
 }
 
 function updatePort() {

@@ -7,6 +7,9 @@ let exampleName = '08-twoArduinosArray';
 // variable for background color of the p5.js canvas
 let yellow;
 
+// variable for text color
+let black;
+
 // Change these to the name of your arduinos' serial ports
 let serialPorts = [
   '/dev/tty.usbmodem14501',
@@ -21,6 +24,9 @@ function setup() {
 
   // set yellow color for background
   yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
 
   for (let i = 0; i < serialPorts.length; i++) {
     // Instantiate our SerialPort object
@@ -86,7 +92,13 @@ function gotData(index) {
 function draw() {
   // paint background
   background(yellow);
-  fill(0, 0, 0);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
   text(`From Arduino One: ${data[0]}`, 10, 10);
   text(`From Arduino Two: ${data[1]}`, 10, 30);
   // Polling method
