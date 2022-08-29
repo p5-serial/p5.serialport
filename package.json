@@ -20,11 +20,5 @@
     "serialport": "^10.4.0",
     "ws": "^7.0"
   },
-  "license": "GPL",
-  "devDependencies": {
-    "jsdoc": "^3.6.3"
-  },
-  "scripts": {
-    "doc": "jsdoc -c jsdoc.conf.json"
-  }
+  "license": "GPL"
 }
