@@ -1,11 +1,16 @@
-/*
-  2 serial port test. Put the Arduino analogReadSerial sketch
-  on two Arduinos and connect them to your computer using 2
-  USB ports. Note the port names and change firstPort and
-  secondPort below to match. Then run this sketch. You should see
-  data coming in from both ports independently.
-  
-*/
+// 2 serial port test. Put the Arduino analogReadSerial sketch
+// on two Arduinos and connect them to your computer using 2
+// USB ports. Note the port names and change firstPort and
+// secondPort below to match. Then run this sketch. You should see
+// data coming in from both ports independently.
+
+let exampleName = '10-twoPortRead';
+
+// variable for background color of the p5.js canvas
+let yellow;
+
+// variable for text color
+let black;
 
 let serial1 = new p5.SerialPort();
 let serial2 = new p5.SerialPort();
@@ -15,7 +20,15 @@ let input1 = '';
 let input2 = '';
 
 function setup() {
-  createCanvas(400, 300);
+  // small canvas
+  createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
+
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);
   serial2.on('data', serial2Event);
@@ -26,8 +39,15 @@ function setup() {
 }
 
 function draw() {
-  background(0x23, 0x76, 0xf3);
-  fill(255);
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
   text('data from serial port 1:' + input1, 30, 30);
   text('data from serial port 2: ' + input2, 30, 90);
 }

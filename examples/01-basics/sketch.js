@@ -1,27 +1,41 @@
+// TODO: example header
+
 let exampleName = '01-basics';
+
+// variable for background color of the p5.js canvas
+let yellow;
+
+// variable for text color
+let black;
 
 // declare a variable for p5.SerialPort object
 let serial;
+let latestData = 'waiting for data';
 
 // change this to the name of your Arduino's serial port
 let namePort = '/dev/cu.usbmodem11201';
 
-// declare variable for latest data
-let latestData = 'waiting for data';
+// declare a variable for a HTML DOM input element
+let inputField;
 
-let yellow;
+// declare a variable for a HTML DOM button
+let button;
 
 function setup() {
   // small canvas
-  createCanvas(500, 500);
+  createCanvas(300, 300);
 
-  input = createInput(namePort);
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
+
+  inputField = createInput(namePort);
   button = createButton('update port');
   button.mousePressed(updatePort);
 
-  textAlign(CENTER, CENTER);
-
-  yellow = color(255, 255, 0);
+  textAlign(LEFT, CENTER);
 
   // instantiate the SerialPort object
   serial = new p5.SerialPort();
@@ -54,6 +68,26 @@ function setup() {
 
   // Callback to get the raw data, as it comes in for handling yourself
   // serial.on('rawdata', gotRawData);
+}
+
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  // text(latestData, 10, 10);
+  // Polling method
+  /*
+  if (serial.available() > 0) {
+  let data = serial.read();
+  ellipse(50,50,data,data);
+}
+*/
 }
 
 // We are connected and ready to go
@@ -105,21 +139,6 @@ function gotRawData(thedata) {
   print('gotRawData' + thedata);
 }
 
-function draw() {
-  background(yellow);
-  text(exampleName, width / 2, height / 10);
-  print('test');
-  // fill(0, 0, 0);
-  // text(latestData, 10, 10);
-  // Polling method
-  /*
-  if (serial.available() > 0) {
-  let data = serial.read();
-  ellipse(50,50,data,data);
-}
-*/
-}
-
 function updatePort() {
-  namePort = input.value();
+  namePort = inputField.value();
 }

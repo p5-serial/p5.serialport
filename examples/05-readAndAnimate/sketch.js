@@ -1,15 +1,18 @@
-/*
-Serial read and animate example
+// Serial read and animate example
+// Reads an ASCII-encoded string from a seiral port via a webSocket server.
+// Animates the text on the screen with the received value
+// You can use this with the included Arduino example called AnalogReadSerial.
+// Works with P5 editor as the socket/serial server, version 0.5.5 or later.
+// written 2 Oct 2015
+// by Tom Igoe
 
-Reads an ASCII-encoded string from a seiral port via a webSocket server.
-Animates the text on the screen with the received value
+let exampleName = '05-readAndAnimate';
 
-You can use this with the included Arduino example called AnalogReadSerial.
-Works with P5 editor as the socket/serial server, version 0.5.5 or later.
+// variable for background color of the p5.js canvas
+let yellow;
 
-written 2 Oct 2015
-by Tom Igoe
-*/
+// variable for text color
+let black;
 
 // Declare a "SerialPort" object
 let serial;
@@ -18,7 +21,14 @@ let portName = '/dev/cu.usbmodem1411';
 let textXpos = 10;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // small canvas
+  createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
+  // set black color for text
+  black = color(0);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();
@@ -35,6 +45,19 @@ function setup() {
 
   // When you some data from the serial port
   serial.on('data', gotData);
+}
+
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  text('sensor value: ' + textXpos, textXpos, 30);
 }
 
 // Got the list of ports
@@ -57,10 +80,4 @@ function gotData() {
     // make sure the string is a number (i.e. NOT Not a Number (NaN))
     textXpos = currentString; // save the currentString to use for the text position in draw()
   }
-}
-
-function draw() {
-  background(255, 255, 255);
-  fill(0, 0, 0);
-  text('sensor value: ' + textXpos, textXpos, 30);
 }
