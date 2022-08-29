@@ -19,6 +19,12 @@ let serial2 = new p5.SerialPort();
 // variable por serialPortName
 let serialPortName = '/dev/cu.usbmodem11201';
 
+// variable for HTML DOM input for serial port name
+let htmlInputPortName;
+
+// variable for HTML DOM button for entering new serial port name
+let htmlButtonPortName;
+
 let firstPort = '/dev/cu.usbmodem14111';
 let secondPort = '/dev/cu.usbmodem141431';
 let input1 = '';
@@ -36,6 +42,15 @@ function setup() {
 
   // set text alignment
   textAlign(LEFT, CENTER);
+
+  // p5.js to create HTML input and set initial value
+  htmlInputPortName = createInput(serialPortName);
+
+  // p5.js to create HTML button and set message
+  button = createButton('update port');
+
+  // p5.js to add callback function for mouse press
+  button.mousePressed(updatePort);
 
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);
@@ -58,6 +73,11 @@ function draw() {
 
   text('data from serial port 1:' + input1, 30, 30);
   text('data from serial port 2: ' + input2, 30, 90);
+}
+
+// callback function to update serial port name
+function updatePort() {
+  serialPortName = htmlInputPortName.value();
 }
 
 function serialEvent() {
