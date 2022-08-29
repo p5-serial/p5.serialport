@@ -1,10 +1,14 @@
-let exampleName = '00-shared';
+// constant for example name
+const exampleName = '00-shared';
 
 // variable for background color of the p5.js canvas
 let yellow;
 
 // variable for text color
 let black;
+
+// variable for p5.SerialPort object
+let serial;
 
 function setup() {
   // small canvas
@@ -15,6 +19,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 }
 
 function draw() {

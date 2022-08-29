@@ -4,7 +4,8 @@
 // secondPort below to match. Then run this sketch. You should see
 // data coming in from both ports independently.
 
-let exampleName = '10-twoPortRead';
+// constant for example name
+const exampleName = '10-twoPortRead';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -28,6 +29,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);

@@ -6,7 +6,8 @@
 // written 2 Oct 2015
 // by Tom Igoe
 
-let exampleName = '09-writeExample';
+// constant for example name
+const exampleName = '09-writeExample';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -14,7 +15,7 @@ let yellow;
 // variable for text color
 let black;
 
-// Declare a "SerialPort" object
+// variable for p5.SerialPort object
 let serial;
 
 let portName = '/dev/cu.usbmodem14131'; // fill in your serial port name here
@@ -31,6 +32,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();

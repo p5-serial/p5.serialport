@@ -1,6 +1,7 @@
 // TODO: example header
 
-let exampleName = '01-basics';
+// constant for example name
+const exampleName = '01-basics';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -8,12 +9,13 @@ let yellow;
 // variable for text color
 let black;
 
-// declare a variable for p5.SerialPort object
+// variable for p5.SerialPort object
 let serial;
-let latestData = 'waiting for data';
 
 // change this to the name of your Arduino's serial port
 let namePort = '/dev/cu.usbmodem11201';
+
+let latestData = 'waiting for data';
 
 // declare a variable for a HTML DOM input element
 let inputField;
@@ -31,11 +33,12 @@ function setup() {
   // set black color for text
   black = color(0);
 
+  // set text alignment
+  textAlign(LEFT, CENTER);
+
   inputField = createInput(namePort);
   button = createButton('update port');
   button.mousePressed(updatePort);
-
-  textAlign(LEFT, CENTER);
 
   // instantiate the SerialPort object
   serial = new p5.SerialPort();

@@ -5,7 +5,8 @@
 // created 2 Oct 2015
 // by Tom Igoe
 
-let exampleName = '04-makePortMenu';
+// constant for example name
+const exampleName = '04-makePortMenu';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -13,7 +14,9 @@ let yellow;
 // variable for text color
 let black;
 
-let serial; // Declare a "SerialPort" object
+// variable for p5.SerialPort object
+let serial;
+
 let menu;
 let result = '';
 
@@ -26,6 +29,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   serial = new p5.SerialPort();
   serial.list();
