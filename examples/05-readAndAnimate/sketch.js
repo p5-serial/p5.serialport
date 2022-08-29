@@ -6,7 +6,8 @@
 // written 2 Oct 2015
 // by Tom Igoe
 
-let exampleName = '05-readAndAnimate';
+// constant for example name
+const exampleName = '05-readAndAnimate';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -14,8 +15,9 @@ let yellow;
 // variable for text color
 let black;
 
-// Declare a "SerialPort" object
+// variable for p5.SerialPort object
 let serial;
+
 // fill in the name of your serial port here:
 let portName = '/dev/cu.usbmodem1411';
 let textXpos = 10;
@@ -53,6 +55,9 @@ function draw() {
 
   // set text color
   fill(black);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   // place example name on the top of the canvas
   text(exampleName, (5 * width) / 100, (5 * height) / 100);

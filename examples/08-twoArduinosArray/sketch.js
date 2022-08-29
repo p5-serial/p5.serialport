@@ -2,7 +2,8 @@
 // in one sketch using arrays.
 // By Jiwon Shin
 
-let exampleName = '08-twoArduinosArray';
+// constant for example name
+const exampleName = '08-twoArduinosArray';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -27,6 +28,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   for (let i = 0; i < serialPorts.length; i++) {
     // Instantiate our SerialPort object

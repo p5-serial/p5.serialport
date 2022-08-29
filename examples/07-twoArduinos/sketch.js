@@ -1,7 +1,8 @@
 // Example of using multiple serial ports in one sketch.
 // By Jiwon Shin
 
-let exampleName = '07-twoArduinos';
+// constant for example name
+const exampleName = '07-twoArduinos';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -9,10 +10,14 @@ let yellow;
 // variable for text color
 let black;
 
-// Declare a SerialPort object
-let serialOne, serialTwo;
+// variable for p5.SerialPort object
+let serial;
+
+// variable for additional p5.SerialPort object
+let serialAdditional;
+
 let latestDataOne = 'waiting for data';
-let latestDataTwo = 'waiting for data'; // you'll use this to write incoming data to the canvas
+let latestDataTwo = 'waiting for data';
 
 function setup() {
   // small canvas
@@ -24,41 +29,44 @@ function setup() {
   // set black color for text
   black = color(0);
 
+  // set text alignment
+  textAlign(LEFT, CENTER);
+
   // Instantiate our SerialPort object
-  serialOne = new p5.SerialPort();
-  serialTwo = new p5.SerialPort();
+  serial = new p5.SerialPort();
+  serialAdditional = new p5.SerialPort();
 
   // Get a list the ports available
   // You should have a callback defined to see the results
-  serialOne.list();
+  serial.list();
 
   // Assuming our Arduino is connected, let's open the connection to it
   // Change this to the name of your arduino's serial port
-  serialOne.openPort('/dev/tty.usbmodem14501');
-  serialTwo.openPort('/dev/tty.usbmodem14101');
+  serial.openPort('/dev/tty.usbmodem14501');
+  serialAdditional.openPort('/dev/tty.usbmodem14101');
 
   // Here are the callbacks that you can register
   // When we connect to the underlying server
-  serialOne.on('connected', serverConnected);
-  serialTwo.on('connected', serverConnected);
+  serial.on('connected', serverConnected);
+  serialAdditional.on('connected', serverConnected);
 
   // When we get a list of serial ports that are available
-  serialOne.on('list', gotList);
+  serial.on('list', gotList);
 
   // When we some data from the serial port
-  serialOne.on('data', gotDataOne);
-  serialTwo.on('data', gotDataTwo);
+  serial.on('data', gotDataOne);
+  serialAdditional.on('data', gotDataTwo);
 
   // When or if we get an error
-  serialOne.on('error', gotError);
-  serialTwo.on('error', gotError);
+  serial.on('error', gotError);
+  serialAdditional.on('error', gotError);
 
   // When our serial port is opened and ready for read/write
-  serialOne.on('open', gotOpen);
-  serialTwo.on('open', gotOpen);
+  serial.on('open', gotOpen);
+  serialAdditional.on('open', gotOpen);
 
-  serialOne.on('close', gotClose);
-  serialTwo.on('close', gotClose);
+  serial.on('close', gotClose);
+  serialAdditional.on('close', gotClose);
 
   // Callback to get the raw data, as it comes in for handling yourself
   //serial.on('rawdata', gotRawData);
@@ -116,8 +124,8 @@ function gotError(theerror) {
 }
 
 // There is data available to work with from the serial port
-function gotDataOne() {
-  let currentString = serialOne.readLine(); // read the incoming string
+function gotData() {
+  let currentString = serial.readLine(); // read the incoming string
   trim(currentString); // remove any trailing whitespace
   if (!currentString) return; // if the string is empty, do no more
   console.log(currentString); // print the string
@@ -125,8 +133,8 @@ function gotDataOne() {
 }
 
 // There is data available to work with from the serial port
-function gotDataTwo() {
-  let currentString = serialTwo.readLine(); // read the incoming string
+function gotDataAdditional() {
+  let currentString = serialAdditional.readLine(); // read the incoming string
   trim(currentString); // remove any trailing whitespace
   if (!currentString) return; // if the string is empty, do no more
   console.log(currentString); // print the string

@@ -3,7 +3,8 @@
 // Try at varying baudrates, up to 115200 (make sure to change
 // Arduino to matching baud rate)
 
-let exampleName = '03-echo2';
+// constant for example name
+const exampleName = '03-echo2';
 
 // variable for background color of the p5.js canvas
 let yellow;
@@ -11,7 +12,9 @@ let yellow;
 // variable for text color
 let black;
 
-let serial; // variable to hold an instance of the serialport library
+// variable for p5.SerialPort object
+let serial;
+
 let portName = '/dev/tty.usbmodem14501'; // fill in your serial port name here
 let inData; // for incoming serial data
 let inByte;
@@ -30,6 +33,9 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
 
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   serial.on('data', serialEvent); // callback for when new data arrives
