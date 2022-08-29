@@ -6,6 +6,9 @@
 
 let exampleName = '10-twoPortRead';
 
+// variable for background color of the p5.js canvas
+let yellow;
+
 let serial1 = new p5.SerialPort();
 let serial2 = new p5.SerialPort();
 let firstPort = '/dev/cu.usbmodem14111';
@@ -16,6 +19,10 @@ let input2 = '';
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);
   serial2.on('data', serial2Event);
@@ -26,7 +33,8 @@ function setup() {
 }
 
 function draw() {
-  background(0x23, 0x76, 0xf3);
+  // paint background
+  background(yellow);
   fill(255);
   text('data from serial port 1:' + input1, 30, 30);
   text('data from serial port 2: ' + input2, 30, 90);

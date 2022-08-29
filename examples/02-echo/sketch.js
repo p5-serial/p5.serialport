@@ -1,14 +1,19 @@
 let exampleName = '02-echo';
 
+// variable for background color of the p5.js canvas
+let yellow;
+
 let serial; // variable to hold an instance of the serialport library
 let portName = '/dev/tty.usbmodem14501'; // fill in your serial port name here
 let inData; // for incoming serial data
 
 function setup() {
   // small canvas
-  createCanvas(500, 500);
+  createCanvas(300, 300);
 
-  yellow = color(255, 255, 0);
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
@@ -18,7 +23,9 @@ function setup() {
 }
 
 function draw() {
+  // paint background
   background(yellow);
+
   text(exampleName, (5 * width) / 100, (5 * height) / 100);
 
   fill(255);

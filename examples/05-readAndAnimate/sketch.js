@@ -1,17 +1,15 @@
+// Serial read and animate example
+// Reads an ASCII-encoded string from a seiral port via a webSocket server.
+// Animates the text on the screen with the received value
+// You can use this with the included Arduino example called AnalogReadSerial.
+// Works with P5 editor as the socket/serial server, version 0.5.5 or later.
+// written 2 Oct 2015
+// by Tom Igoe
+
 let exampleName = '05-readAndAnimate';
 
-/*
-Serial read and animate example
-
-Reads an ASCII-encoded string from a seiral port via a webSocket server.
-Animates the text on the screen with the received value
-
-You can use this with the included Arduino example called AnalogReadSerial.
-Works with P5 editor as the socket/serial server, version 0.5.5 or later.
-
-written 2 Oct 2015
-by Tom Igoe
-*/
+// variable for background color of the p5.js canvas
+let yellow;
 
 // Declare a "SerialPort" object
 let serial;
@@ -22,6 +20,9 @@ let textXpos = 10;
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();
@@ -63,7 +64,8 @@ function gotData() {
 }
 
 function draw() {
-  background(255, 255, 255);
+  // paint background
+  background(yellow);
   fill(0, 0, 0);
   text('sensor value: ' + textXpos, textXpos, 30);
 }

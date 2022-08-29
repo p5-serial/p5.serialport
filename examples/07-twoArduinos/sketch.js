@@ -1,11 +1,12 @@
+// Example of using multiple serial ports in one sketch.
+// By Jiwon Shin
+
 let exampleName = '07-twoArduinos';
 
-/*
-Example of using multiple serial ports in one sketch.
+// variable for background color of the p5.js canvas
+let yellow;
 
-By Jiwon Shin
-*/
-// Declare a "SerialPort" object
+// Declare a SerialPort object
 let serialOne, serialTwo;
 let latestDataOne = 'waiting for data';
 let latestDataTwo = 'waiting for data'; // you'll use this to write incoming data to the canvas
@@ -13,6 +14,9 @@ let latestDataTwo = 'waiting for data'; // you'll use this to write incoming dat
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
 
   // Instantiate our SerialPort object
   serialOne = new p5.SerialPort();
@@ -118,7 +122,8 @@ function gotRawData(thedata) {
 }
 
 function draw() {
-  background(255, 255, 255);
+  // paint background
+  background(yellow);
   fill(0, 0, 0);
   text(`From Arduino One: ${latestDataOne}`, 10, 10);
   text(`From Arduino Two: ${latestDataTwo}`, 10, 30);

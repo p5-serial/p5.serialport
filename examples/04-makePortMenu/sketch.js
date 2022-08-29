@@ -1,17 +1,14 @@
+// Serial list ports
+// Lists serial ports in an options menu. When you choose one, opens the port
+// and displays any incoming strings as text onscreen.
+// Works with p5 editor as the serial server, version 0.5.5 or later.
+// created 2 Oct 2015
+// by Tom Igoe
+
 let exampleName = '04-makePortMenu';
 
-/*
-
-Serial list ports
-
-Lists serial ports in an options menu. When you choose one, opens the port
-and displays any incoming strings as text onscreen.
-
-Works with p5 editor as the serial server, version 0.5.5 or later.
-
-created 2 Oct 2015
-by Tom Igoe
-*/
+// variable for background color of the p5.js canvas
+let yellow;
 
 let serial; // Declare a "SerialPort" object
 let menu;
@@ -20,6 +17,10 @@ let result = '';
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
   serial = new p5.SerialPort();
   serial.list();
   serial.on('list', printList);
@@ -27,7 +28,8 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  // paint background
+  background(yellow);
   fill(0);
   text(result, 10, 60);
 }

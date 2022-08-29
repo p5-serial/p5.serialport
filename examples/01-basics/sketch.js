@@ -1,5 +1,8 @@
+// TODO: example header
+
 let exampleName = '01-basics';
 
+// variable for background color of the p5.js canvas
 let yellow;
 
 // declare a variable for p5.SerialPort object
@@ -19,13 +22,14 @@ function setup() {
   // small canvas
   createCanvas(300, 300);
 
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
   inputField = createInput(namePort);
   button = createButton('update port');
   button.mousePressed(updatePort);
 
   textAlign(LEFT, CENTER);
-
-  yellow = color(255, 255, 0);
 
   // instantiate the SerialPort object
   serial = new p5.SerialPort();

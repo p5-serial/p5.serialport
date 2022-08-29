@@ -1,7 +1,11 @@
+// Example of using multiple serial ports
+// in one sketch using arrays.
+// By Jiwon Shin
+
 let exampleName = '08-twoArduinosArray';
 
-// Example of using multiple serial ports in one sketch using arrays.
-// By Jiwon Shin
+// variable for background color of the p5.js canvas
+let yellow;
 
 // Change these to the name of your arduinos' serial ports
 let serialPorts = [
@@ -14,6 +18,9 @@ let data = [];
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
 
   for (let i = 0; i < serialPorts.length; i++) {
     // Instantiate our SerialPort object
@@ -77,7 +84,8 @@ function gotData(index) {
 }
 
 function draw() {
-  background(255, 255, 255);
+  // paint background
+  background(yellow);
   fill(0, 0, 0);
   text(`From Arduino One: ${data[0]}`, 10, 10);
   text(`From Arduino Two: ${data[1]}`, 10, 30);

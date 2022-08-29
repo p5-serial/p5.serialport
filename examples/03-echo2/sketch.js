@@ -1,12 +1,12 @@
+// Test this with the Arduino sketch echo.ino, in the p5.serialport
+// examples/echo directory.
+// Try at varying baudrates, up to 115200 (make sure to change
+// Arduino to matching baud rate)
+
 let exampleName = '03-echo2';
 
-/*
-  Test this with the Arduino sketch echo.ino, in the p5.serialport
-  examples/echo directory.
-  
-  Try at varying baudrates, up to 115200 (make sure to change
-  Arduino to matching baud rate)
-*/
+// variable for background color of the p5.js canvas
+let yellow;
 
 let serial; // variable to hold an instance of the serialport library
 let portName = '/dev/tty.usbmodem14501'; // fill in your serial port name here
@@ -21,6 +21,10 @@ let options = {
 function setup() {
   // small canvas
   createCanvas(300, 300);
+
+  // set yellow color for background
+  yellow = color(255, 255, (255 * 2) / 8);
+
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors
@@ -30,8 +34,9 @@ function setup() {
 }
 
 function draw() {
-  // black background, white text:
-  background(0);
+  // paint background
+  background(yellow);
+
   fill(255);
   // display the incoming serial data as a string:
   text('type any key to begin sending.', 30, 30);
