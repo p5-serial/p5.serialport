@@ -12,8 +12,8 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
-// change this to the name of your Arduino's serial port
-let namePort = '/dev/cu.usbmodem11201';
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
 
 let latestData = 'waiting for data';
 
@@ -143,5 +143,5 @@ function gotRawData(thedata) {
 }
 
 function updatePort() {
-  namePort = inputField.value();
+  serialPortName = inputField.value();
 }

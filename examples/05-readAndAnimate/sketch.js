@@ -18,8 +18,9 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
-// fill in the name of your serial port here:
-let portName = '/dev/cu.usbmodem1411';
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
+
 let textXpos = 10;
 
 function setup() {
@@ -40,7 +41,7 @@ function setup() {
   serial.list();
 
   // Assuming our Arduino is connected,  open the connection to it
-  serial.openPort(portName);
+  serial.openPort(serialPortName);
 
   // When you get a list of serial ports that are available
   serial.on('list', gotList);

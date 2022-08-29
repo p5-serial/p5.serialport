@@ -11,6 +11,9 @@ let yellow;
 // variable for text color
 let black;
 
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
+
 // Change these to the name of your arduinos' serial ports
 let serialPorts = [
   '/dev/tty.usbmodem14501',

@@ -18,7 +18,8 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
-let portName = '/dev/cu.usbmodem14131'; // fill in your serial port name here
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
 
 // this is the message that will be sent to the Arduino:
 let outMessage = 'H';

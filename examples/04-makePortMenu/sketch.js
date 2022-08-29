@@ -17,6 +17,9 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
+// variable por serialPortName
+let serialPortName = '/dev/cu.usbmodem11201';
+
 let menu;
 let result = '';
 
