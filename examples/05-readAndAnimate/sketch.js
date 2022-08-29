@@ -21,6 +21,12 @@ let serial;
 // variable por serialPortName
 let serialPortName = '/dev/cu.usbmodem11201';
 
+// variable for HTML DOM input for serial port name
+let htmlInputPortName;
+
+// variable for HTML DOM button for entering new serial port name
+let htmlButtonPortName;
+
 let textXpos = 10;
 
 function setup() {
@@ -32,6 +38,18 @@ function setup() {
 
   // set black color for text
   black = color(0);
+
+  // set text alignment
+  textAlign(LEFT, CENTER);
+
+  // p5.js to create HTML input and set initial value
+  htmlInputPortName = createInput(serialPortName);
+
+  // p5.js to create HTML button and set message
+  button = createButton('update port');
+
+  // p5.js to add callback function for mouse press
+  button.mousePressed(updatePort);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();
@@ -64,6 +82,11 @@ function draw() {
   text(exampleName, (5 * width) / 100, (5 * height) / 100);
 
   text('sensor value: ' + textXpos, textXpos, 30);
+}
+
+// callback function to update serial port name
+function updatePort() {
+  serialPortName = htmlInputPortName.value();
 }
 
 // Got the list of ports

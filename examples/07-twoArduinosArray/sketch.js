@@ -14,6 +14,12 @@ let black;
 // variable por serialPortName
 let serialPortName = '/dev/cu.usbmodem11201';
 
+// variable for HTML DOM input for serial port name
+let htmlInputPortName;
+
+// variable for HTML DOM button for entering new serial port name
+let htmlButtonPortName;
+
 // Change these to the name of your arduinos' serial ports
 let serialPorts = [
   '/dev/tty.usbmodem14501',
@@ -34,6 +40,15 @@ function setup() {
 
   // set text alignment
   textAlign(LEFT, CENTER);
+
+  // p5.js to create HTML input and set initial value
+  htmlInputPortName = createInput(serialPortName);
+
+  // p5.js to create HTML button and set message
+  button = createButton('update port');
+
+  // p5.js to add callback function for mouse press
+  button.mousePressed(updatePort);
 
   for (let i = 0; i < serialPorts.length; i++) {
     // Instantiate our SerialPort object
@@ -76,6 +91,11 @@ function draw() {
     ellipse(50,50,data,data);
   }
   */
+}
+
+// callback function to update serial port name
+function updatePort() {
+  serialPortName = htmlInputPortName.value();
 }
 
 // We are connected and ready to go

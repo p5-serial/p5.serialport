@@ -10,10 +10,17 @@ let black;
 // variable for p5.SerialPort object
 let serial;
 
+// variable for latest incoming data
+let latestData = 'waiting for incoming data';
+
 // variable por serialPortName
 let serialPortName = '/dev/cu.usbmodem11201';
 
-let inData; // for incoming serial data
+// variable for HTML DOM input for serial port name
+let htmlInputPortName;
+
+// variable for HTML DOM button for entering new serial port name
+let htmlButtonPortName;
 
 function setup() {
   // small canvas
@@ -27,6 +34,15 @@ function setup() {
 
   // set text alignment
   textAlign(LEFT, CENTER);
+
+  // p5.js to create HTML input and set initial value
+  htmlInputPortName = createInput(serialPortName);
+
+  // p5.js to create HTML button and set message
+  button = createButton('update port');
+
+  // p5.js to add callback function for mouse press
+  button.mousePressed(updatePort);
 
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   serial.on('data', serialEvent); // callback for when new data arrives
@@ -47,7 +63,12 @@ function draw() {
   text(exampleName, (5 * width) / 100, (5 * height) / 100);
 
   // display the incoming serial data as a string:
-  text('incoming value: ' + inData, 30, 30);
+  text('incoming value: ' + latestData, 30, 30);
+}
+
+// callback function to update serial port name
+function updatePort() {
+  serialPortName = htmlInputPortName.value();
 }
 
 function keyTyped() {
@@ -61,7 +82,7 @@ function serialEvent() {
   // read a byte from the serial port:
   let inByte = serial.read();
   print('inByte: ' + inByte);
-  inData = inByte;
+  latestData = inByte;
 }
 
 function serialError(err) {
