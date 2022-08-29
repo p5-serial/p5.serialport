@@ -30,6 +30,7 @@ let htmlButtonPortName;
 // this is the message that will be sent to the Arduino:
 let outMessage = 'H';
 
+// p5.js setup() runs once, at the beginning
 function setup() {
   // small canvas
   createCanvas(300, 300);
@@ -52,7 +53,7 @@ function setup() {
   // p5.js to add callback function for mouse press
   button.mousePressed(updatePort);
 
-  // make an instance of the SerialPort object
+  // create instance of p5.SerialPort
   serial = new p5.SerialPort();
 
   // Get a list the ports available
@@ -69,6 +70,7 @@ function setup() {
   serial.on('data', gotData);
 }
 
+// p5.js draw() runs after setup(), on a loop
 function draw() {
   // paint background
   background(yellow);
