@@ -50,6 +50,27 @@ function setup() {
   serials[0].list();
 }
 
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  text(`From Arduino One: ${data[0]}`, 10, 10);
+  text(`From Arduino Two: ${data[1]}`, 10, 30);
+  // Polling method
+  /*
+    if (serial.available() > 0) {
+    let data = serial.read();
+    ellipse(50,50,data,data);
+  }
+  */
+}
+
 // We are connected and ready to go
 function serverConnected() {
   print('Connected to Server');
@@ -87,25 +108,4 @@ function gotData(index) {
   if (!currentString) return; // if the string is empty, do no more
   console.log(currentString); // print the string
   data[index] = currentString; // save it for the draw method
-}
-
-function draw() {
-  // paint background
-  background(yellow);
-
-  // set text color
-  fill(black);
-
-  // place example name on the top of the canvas
-  text(exampleName, (5 * width) / 100, (5 * height) / 100);
-
-  text(`From Arduino One: ${data[0]}`, 10, 10);
-  text(`From Arduino Two: ${data[1]}`, 10, 30);
-  // Polling method
-  /*
-    if (serial.available() > 0) {
-    let data = serial.read();
-    ellipse(50,50,data,data);
-  }
-  */
 }

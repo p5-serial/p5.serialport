@@ -44,34 +44,45 @@ function setup() {
 
   // When we get a list of serial ports that are available
   serialOne.on('list', gotList);
-  // OR
-  //serial.onList(gotList);
 
   // When we some data from the serial port
   serialOne.on('data', gotDataOne);
   serialTwo.on('data', gotDataTwo);
-  // OR
-  //serial.onData(gotData);
 
   // When or if we get an error
   serialOne.on('error', gotError);
   serialTwo.on('error', gotError);
-  // OR
-  //serial.onError(gotError);
 
   // When our serial port is opened and ready for read/write
   serialOne.on('open', gotOpen);
   serialTwo.on('open', gotOpen);
-  // OR
-  //serial.onOpen(gotOpen);
 
   serialOne.on('close', gotClose);
   serialTwo.on('close', gotClose);
 
   // Callback to get the raw data, as it comes in for handling yourself
   //serial.on('rawdata', gotRawData);
-  // OR
-  //serial.onRawData(gotRawData);
+}
+
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  text(`From Arduino One: ${latestDataOne}`, 10, 10);
+  text(`From Arduino Two: ${latestDataTwo}`, 10, 30);
+  // Polling method
+  /*
+  if (serial.available() > 0) {
+  let data = serial.read();
+  ellipse(50,50,data,data);
+}
+*/
 }
 
 // We are connected and ready to go
@@ -125,25 +136,4 @@ function gotDataTwo() {
 // We got raw from the serial port
 function gotRawData(thedata) {
   print('gotRawData' + thedata);
-}
-
-function draw() {
-  // paint background
-  background(yellow);
-
-  // set text color
-  fill(black);
-
-  // place example name on the top of the canvas
-  text(exampleName, (5 * width) / 100, (5 * height) / 100);
-
-  text(`From Arduino One: ${latestDataOne}`, 10, 10);
-  text(`From Arduino Two: ${latestDataTwo}`, 10, 30);
-  // Polling method
-  /*
-  if (serial.available() > 0) {
-  let data = serial.read();
-  ellipse(50,50,data,data);
-}
-*/
 }

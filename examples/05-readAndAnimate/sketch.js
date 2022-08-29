@@ -47,6 +47,19 @@ function setup() {
   serial.on('data', gotData);
 }
 
+function draw() {
+  // paint background
+  background(yellow);
+
+  // set text color
+  fill(black);
+
+  // place example name on the top of the canvas
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
+
+  text('sensor value: ' + textXpos, textXpos, 30);
+}
+
 // Got the list of ports
 function gotList(thelist) {
   print('List of Serial Ports:');
@@ -67,17 +80,4 @@ function gotData() {
     // make sure the string is a number (i.e. NOT Not a Number (NaN))
     textXpos = currentString; // save the currentString to use for the text position in draw()
   }
-}
-
-function draw() {
-  // paint background
-  background(yellow);
-
-  // set text color
-  fill(black);
-
-  // place example name on the top of the canvas
-  text(exampleName, (5 * width) / 100, (5 * height) / 100);
-
-  text('sensor value: ' + textXpos, textXpos, 30);
 }

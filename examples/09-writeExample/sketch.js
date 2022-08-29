@@ -77,6 +77,7 @@ function draw() {
 
   text('click to change the LED', 10, 10);
 }
+
 // When you click on the screen, the server sends H or L out the serial port
 function mouseReleased() {
   serial.write(outMessage);
