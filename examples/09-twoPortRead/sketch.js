@@ -30,6 +30,7 @@ let secondPort = '/dev/cu.usbmodem141431';
 let input1 = '';
 let input2 = '';
 
+// p5.js setup() runs once, at the beginning
 function setup() {
   // small canvas
   createCanvas(300, 300);
@@ -52,6 +53,9 @@ function setup() {
   // p5.js to add callback function for mouse press
   button.mousePressed(updatePort);
 
+  // create instance of p5.SerialPort
+  serial = new p5.SerialPort();
+
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);
   serial2.on('data', serial2Event);
@@ -61,6 +65,7 @@ function setup() {
   serial2.openPort(secondPort);
 }
 
+// p5.js draw() runs after setup(), on a loop
 function draw() {
   // paint background
   background(yellow);

@@ -22,6 +22,7 @@ let htmlInputPortName;
 // variable for HTML DOM button for entering new serial port name
 let htmlButtonPortName;
 
+// p5.js setup() runs once, at the beginning
 function setup() {
   // small canvas
   createCanvas(300, 300);
@@ -43,8 +44,12 @@ function setup() {
 
   // p5.js to add callback function for mouse press
   button.mousePressed(updatePort);
+
+  // create instance of p5.SerialPort
+  serial = new p5.SerialPort();
 }
 
+// p5.js draw() runs after setup(), on a loop
 function draw() {
   // paint background
   background(yellow);
