@@ -1,25 +1,29 @@
 let exampleName = '01-basics';
 
+let yellow;
+
 // declare a variable for p5.SerialPort object
 let serial;
+let latestData = 'waiting for data';
 
 // change this to the name of your Arduino's serial port
 let namePort = '/dev/cu.usbmodem11201';
 
-// declare variable for latest data
-let latestData = 'waiting for data';
+// declare a variable for a HTML DOM input element
+let inputField;
 
-let yellow;
+// declare a variable for a HTML DOM button
+let button;
 
 function setup() {
   // small canvas
   createCanvas(500, 500);
 
-  input = createInput(namePort);
+  inputField = createInput(namePort);
   button = createButton('update port');
   button.mousePressed(updatePort);
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, CENTER);
 
   yellow = color(255, 255, 0);
 
@@ -107,8 +111,7 @@ function gotRawData(thedata) {
 
 function draw() {
   background(yellow);
-  text(exampleName, width / 2, height / 10);
-  print('test');
+  text(exampleName, (5 * width) / 100, (5 * height) / 100);
   // fill(0, 0, 0);
   // text(latestData, 10, 10);
   // Polling method
@@ -121,5 +124,5 @@ function draw() {
 }
 
 function updatePort() {
-  namePort = input.value();
+  namePort = inputField.value();
 }
