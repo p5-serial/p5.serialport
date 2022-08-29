@@ -56,6 +56,9 @@ function setup() {
   // create instance of p5.SerialPort
   serial = new p5.SerialPort();
 
+  // print version of p5.serialport library
+  console.log('p5.serialport.js ' + serial.version);
+
   serial1.on('data', serialEvent);
   serial1.on('error', serialError);
   serial2.on('data', serial2Event);

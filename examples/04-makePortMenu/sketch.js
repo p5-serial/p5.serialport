@@ -55,6 +55,9 @@ function setup() {
   // create instance of p5.SerialPort
   serial = new p5.SerialPort();
 
+  // print version of p5.serialport library
+  console.log('p5.serialport.js ' + serial.version);
+
   serial.list();
   serial.on('list', printList);
   serial.on('data', printData);
@@ -79,7 +82,7 @@ function updatePort() {
   serialPortName = htmlInputPortName.value();
 }
 
-function openPort() {
+function menuOpenPort() {
   portName = menu.elt.value;
   serial.openPort(portName);
 }
@@ -97,7 +100,7 @@ function printList(serialList) {
   let title = createElement('option', 'Choose a port:');
   menu.child(title);
   menu.position(10, 10);
-  menu.changed(openPort);
+  menu.changed(menuOpenPort);
   for (let i = 0; i < serialList.length; i++) {
     let thisOption = createElement('option', serialList[i]);
     thisOption.value = serialList[i];
