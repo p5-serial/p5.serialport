@@ -1,3 +1,5 @@
+let exampleName = '05-readAndAnimate';
+
 /*
 Serial read and animate example
 
@@ -18,7 +20,8 @@ let portName = '/dev/cu.usbmodem1411';
 let textXpos = 10;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // small canvas
+  createCanvas(300, 300);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();

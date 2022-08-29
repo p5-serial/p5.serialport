@@ -1,3 +1,5 @@
+let exampleName = '04-makePortMenu';
+
 /*
 
 Serial list ports
@@ -16,7 +18,8 @@ let menu;
 let result = '';
 
 function setup() {
-  createCanvas(400, 300); // window size
+  // small canvas
+  createCanvas(300, 300);
   serial = new p5.SerialPort();
   serial.list();
   serial.on('list', printList);

@@ -17,7 +17,7 @@ let button;
 
 function setup() {
   // small canvas
-  createCanvas(500, 500);
+  createCanvas(300, 300);
 
   inputField = createInput(namePort);
   button = createButton('update port');

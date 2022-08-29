@@ -1,3 +1,5 @@
+let exampleName = '03-echo2';
+
 /*
   Test this with the Arduino sketch echo.ino, in the p5.serialport
   examples/echo directory.
@@ -17,7 +19,8 @@ let options = {
 };
 
 function setup() {
-  createCanvas(400, 300);
+  // small canvas
+  createCanvas(300, 300);
   serial = new p5.SerialPort(); // make a new instance of the serialport library
   serial.on('data', serialEvent); // callback for when new data arrives
   serial.on('error', serialError); // callback for errors

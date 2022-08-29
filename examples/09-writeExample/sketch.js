@@ -1,12 +1,12 @@
-/*
-Serial write example
-Sends a byte to a webSocket server which sends the same byte
-out through a serial port.
-You can use this with the included Arduino example called PhysicalPixel.
-Works with P5 editor as the socket/serial server, version 0.5.5 or later.
-written 2 Oct 2015
-by Tom Igoe
-*/
+// Serial write example
+// Sends a byte to a webSocket server which sends the same byte
+// out through a serial port.
+// You can use this with the included Arduino example called PhysicalPixel.
+// Works with P5 editor as the socket/serial server, version 0.5.5 or later.
+// written 2 Oct 2015
+// by Tom Igoe
+
+let exampleName = '09-writeExample';
 
 // Declare a "SerialPort" object
 let serial;
@@ -17,7 +17,8 @@ let portName = '/dev/cu.usbmodem14131'; // fill in your serial port name here
 let outMessage = 'H';
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // small canvas
+  createCanvas(300, 300);
 
   // make an instance of the SerialPort object
   serial = new p5.SerialPort();
