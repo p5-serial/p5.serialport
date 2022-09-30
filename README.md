@@ -134,3 +134,7 @@ function draw() {
 */
 }
 ```
+
+## Contributions
+
+Info about contributing is available at the main repository of this organization: [https://github.com/p5-serial/p5.serial.github.io/](https://github.com/p5-serial/p5.serial.github.io/).
