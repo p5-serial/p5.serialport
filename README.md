@@ -16,7 +16,7 @@ The only prerrequisite for using with this library is first running a server usi
 
 After running the server, you can create a client using the p5.serialport library.
 
-We recommend first trying the included examples on the docs/ folder of this repo, which are also available online via GitHub pages at [https://p5-serial.github.io/p5.serialport/examples/](https://p5-serial.github.io/p5.serialport/examples/).
+We recommend first trying the included [examples](https://github.com/p5-serial/p5.serialport/tree/main/examples) on this repository, which include live websites and Arduino code for testing the library.
 
 Remember that you will likely have to change the name of the serial port in the examples to the one your serial device is using.
 
