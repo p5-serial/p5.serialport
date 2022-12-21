@@ -88,7 +88,10 @@ function draw() {
 
 // callback function to update serial port name
 function updatePort() {
+  // retrieve serial port name from the text area
   serialPortName = htmlInputPortName.value();
+  // open the serial port
+  serial.openPort(serialPortName);
 }
 
 function serialEvent() {
