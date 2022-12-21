@@ -5,7 +5,7 @@ The 00-shared/ folder is a special one, used for storing the assets that are use
 | Example folder            | Website                                                                            |
 | :------------------------ | :--------------------------------------------------------------------------------- |
 | [00-shared](./00-shared/) | [Website](https://p5-serial.github.io/p5.serialport/examples/00-shared)            |
-| [01-basics](./01-shared)  | [Website](https://p5-serial.github.io/p5.serialport/examples/01-basics/)           |
+| [01-basics](./01-basics)  | [Website](https://p5-serial.github.io/p5.serialport/examples/01-basics/)           |
 | 02-echo                   | [Website](https://p5-serial.github.io/p5.serialport/examples/02-echo/)             |
 | 03-echo2                  | [Website](https://p5-serial.github.io/p5.serialport/examples/03-echo2/)            |
 | 04-makePortMenu           | [Website](https://p5-serial.github.io/p5.serialport/examples/04-makePortMenu/)     |
