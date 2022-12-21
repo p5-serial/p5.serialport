@@ -14,7 +14,7 @@ let serial;
 let latestData = 'waiting for incoming data';
 
 // variable por serialPortName
-let serialPortName = '/dev/cu.usbmodem11201';
+let serialPortName = '/dev/cu.usbmodem21201';
 
 // variable for HTML DOM input for serial port name
 let htmlInputPortName;
@@ -76,6 +76,8 @@ function draw() {
 // callback function to update serial port name
 function updatePort() {
   serialPortName = htmlInputPortName.value();
+  // open the serial port
+  serial.openPort(serialPortName);
 }
 
 function keyTyped() {
